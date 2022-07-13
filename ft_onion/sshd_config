@@ -1,0 +1,3 @@
+Port 4242
+PermitRootLogin yes
+AuthorizedKeysFile	.ssh/authorized_keys
